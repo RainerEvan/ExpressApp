@@ -1,22 +1,21 @@
 import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
+import dotenv from 'dotenv';
 
+import connectDb from './app/config/database-config.js';
 import postRoute from './app/routes/post-route.js';
 
+dotenv.config();
+
 const app = express();
-const PORT = 8080;
+const PORT = process.env.PORT;
 
-mongoose.connect('mongodb://localhost:27017/expressapp', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-});
-
+connectDb();
 const db = mongoose.connection;
 db.on('error', (error) => {
     console.log(error)
 })
-
 db.once('connected', () => {
     console.log('Database Connected');
 })
