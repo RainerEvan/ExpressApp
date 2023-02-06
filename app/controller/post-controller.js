@@ -17,7 +17,7 @@ export const getPostById = async (req, res) => {
         .then(data => {
             if(!data){
                 res.status(400).send({
-                    message: "Post with current id cannot be found"
+                    message: 'Post with current id cannot be found'
                 });
             }
             else{
@@ -34,7 +34,7 @@ export const getPostById = async (req, res) => {
 export const addPost = async (req, res) => {
     if(!req.body){
         res.status(400).send({
-            message: "Body cannot be empty"
+            message: 'Body cannot be empty'
         });
     }
 
@@ -57,7 +57,7 @@ export const addPost = async (req, res) => {
 export const updatePost = async (req, res) => {
     if(!req.body){
         res.status(400).send({
-            message: "Body cannot be empty"
+            message: 'Body cannot be empty'
         });
     }
 
@@ -67,12 +67,12 @@ export const updatePost = async (req, res) => {
         .then(data => {
             if(!data){
                 res.status(400).send({
-                    message: "Post with current id cannot be found"
+                    message: 'Post with current id cannot be found'
                 });
             }
             else{
                 res.send({
-                    message: "Post has been updated successfully!"
+                    message: 'Post has been updated successfully!'
                 });
             }
         })
@@ -90,12 +90,12 @@ export const deletePost = async (req, res) => {
         .then(data => {
             if(!data){
                 res.status(400).send({
-                    message: "Post with current id cannot be found"
+                    message: 'Post with current id cannot be found'
                 });
             }
             else{
                 res.send({
-                    message: "Post has been deleted successfully!"
+                    message: 'Post has been deleted successfully!'
                 });
             }
         })

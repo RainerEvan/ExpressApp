@@ -1,24 +1,19 @@
 import express from 'express';
 import cors from 'cors';
-import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 
-import connectDb from './app/config/database-config.js';
-import postRoute from './app/routes/post-route.js';
+import db from './app/config/database-config.js';
+import server from './app/config/graphql-config.js';
+
+import postRoute from './app/route/post-route.js';
 
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT;
 
-connectDb();
-const db = mongoose.connection;
-db.on('error', (error) => {
-    console.log(error)
-})
-db.once('connected', () => {
-    console.log('Database Connected');
-})
+await server.start();
+server.applyMiddleware({app});
 
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
